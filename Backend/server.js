@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors');
 const connection= require("./database/connection")
 const user = require("./database/models/user")
+const adviser= require("./database/models/adviser")
 const { model } = require('mongoose');
 const port=5000
 
@@ -14,8 +15,10 @@ app.use(cors());
 
 // routes
 const API=require("./routers/api")
+const REGISTER=require("./routers/adviserRegister")
 
 app.use("/",API)
+app.use("/",REGISTER)
 
 
 
