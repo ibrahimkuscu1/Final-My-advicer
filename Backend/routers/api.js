@@ -49,7 +49,7 @@ router.route("/signup").post( async(req,res)=>{
     }
 })
 
-router.post("/login", async(req,res)=>{
+router.route("/login").post( async(req,res)=>{
     // const user ={
     //         email:req.body.email,
     //         password:req.body.password
@@ -75,6 +75,7 @@ router.post("/login", async(req,res)=>{
                 }
                 const token= jwt.sign(payload, process.env.Private_Key,{expiresIn:"2h"});
                 res.send(token) 
+                console.log("success")
         }
       
     }       

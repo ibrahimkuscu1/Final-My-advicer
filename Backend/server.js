@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
 const connection= require("./database/connection")
 const user = require("./database/models/user")
 const { model } = require('mongoose');
@@ -7,6 +8,7 @@ const port=5000
 
 // middleware
 app.use(express.json());
+app.use(cors());
 // app.use(express.urlencoded({extended:false}))
 
 
