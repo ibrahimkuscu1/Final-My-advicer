@@ -1,5 +1,6 @@
 import { useState} from "react";
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -17,13 +18,15 @@ export default function Search(props) {
     
   return (
     <div>
+    <div>
     <input 
     value={name}
     onChange={(e) => setName(e.target.value)}
-    style={{width:"800px", height:"100px"}}>
+    style={{width:"200px", height:"50px"}}>
     </input>
-    <button onClick={adviserSearch}
-    style={{width:"80px", height:"20px"}}>Search</button>
+    <Button onClick={adviserSearch} variant="primary">Search</Button>{' '}
+    </div>
+    
     <>
             {infos.map(infos =>  
             <div>          

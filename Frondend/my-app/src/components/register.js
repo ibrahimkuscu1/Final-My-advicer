@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState} from "react";
 import  axios from "axios"
+import AdviserSignIn from "./adviserLogin";
 
 
 const theme = createTheme();
@@ -141,6 +142,8 @@ export default function Register() {
         </Box>
     
       </Container>
+      <AdviserSignIn/>
     </ThemeProvider>
   );
+  
 }

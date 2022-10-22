@@ -16,9 +16,11 @@ app.use(cors());
 // routes
 const API=require("./routers/api")
 const REGISTER=require("./routers/adviserRegister")
+const SEARCH=require("./routers/search")
 
 app.use("/",API)
 app.use("/",REGISTER)
+app.use("/",SEARCH)
 
 
 
@@ -32,4 +34,4 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+}) 
