@@ -15,6 +15,11 @@ export default function Search(props) {
             console.log(data)  
         })
     }
+
+    const redirect = (id)=> {
+      window.location = `/adviserPage/${id}`
+      console.log(id)
+    }
     
   return (
     <div>
@@ -29,9 +34,11 @@ export default function Search(props) {
     
     <>
             {infos.map(infos =>  
-            <div>          
-                <h1
+            <div key={infos._id}>          
+                <h1 onClick={()=>redirect(infos._id)} style={{margin:"10px",cursor:"pointer", border:"solid 1px black", padding:"5px"}}
                 key={infos._id}> {infos.category} {infos.name} {infos.surname}
+                 <Button  variant="primary">Message</Button>{' '}
+
                 </h1>
 
                 </div>

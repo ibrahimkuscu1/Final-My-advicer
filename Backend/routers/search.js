@@ -19,4 +19,17 @@ router.route("/search/:key").get( async (req,res)=>{
  res.send(data)
 })
 
+// router.route('/search2/:id').get((req, res) => {
+//     Adviser.findById(req.params.id)
+//         .then(Adviser => res.json(Adviser))
+//         .catch(err => res.status(400).json('Error: ' + err));
+// });
+
+router.route("/search2/").get( async (req,res)=>{
+    let data = await Adviser.find(
+    )
+    .then(Adviser => res.json(Adviser))
+        .catch(err => res.status(400).json('Error: ' + err));
+   })
+
 module.exports=router

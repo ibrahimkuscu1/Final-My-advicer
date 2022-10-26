@@ -8,6 +8,7 @@ import Register from "./components/register";
 import SignUp from "./components/signup";
 import Home from "./components/home"
 import Navbar from "./components/navbar" 
+import AdviserPage from './components/adviserPage';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
 </Route>
 <Route 
       path='/adviser' element= {<Register/> }>
+</Route>
+<Route 
+      path='/adviserPage/:id' element= {<AdviserPage/> }>
 </Route>
 </Routes>
 </Router>
