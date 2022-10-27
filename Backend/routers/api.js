@@ -70,10 +70,10 @@ router.route("/login").post( async(req,res)=>{
             )
             if(validatePassword){
                 const payload={
-                    userName:user.userName,
-                    email:user.email
+                    email:user.email,
+                    userName:req.body.userName
                 }
-                const token= jwt.sign(payload, process.env.Private_Key,{expiresIn:"2h"});
+                const token= jwt.sign(payload, process.env.JWT_SECRET,{expiresIn:"2h"});
                 res.send(token) 
                 console.log("success")
         }
