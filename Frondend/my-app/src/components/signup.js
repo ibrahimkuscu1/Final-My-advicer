@@ -13,7 +13,7 @@ import  axios from "axios"
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function SignUp(props) {
     const [user,setUser] = useState(
         {
           userName:"",
@@ -21,10 +21,12 @@ export default function SignUp() {
           password:""
         }
     )
+    
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post("http://localhost:5000/signup", user).then((res)=>{
-        console.log(res)
+     console.log(res);
+    window.location="./signIn"
     }).catch((err)=>
     { console.log(err)})
 

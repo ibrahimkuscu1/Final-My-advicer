@@ -17,9 +17,10 @@ import { useState} from "react";
 
 
 
+
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn(props) {
     const [user,setUser] = useState(
         {
           email:"",
@@ -32,7 +33,10 @@ export default function SignIn() {
    
 
     axios.post("http://localhost:5000/login",
-    user).then((res)=>{console.log(res)
+    user).then((res)=>{console.log(res);
+      localStorage.setItem("CC_Token", res.data.token);
+      
+      
     // axios.get("http://localhost:5000/welcome",{
     //     headers:{Authorization:`Bearer ${res.data}`},
     // }).then((res)=>{ console.log(res)})

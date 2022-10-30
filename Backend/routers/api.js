@@ -69,11 +69,11 @@ router.route("/login").post( async(req,res)=>{
                 user.password
             )
             if(validatePassword){
-                const payload={
-                    email:user.email,
-                    userName:req.body.userName
-                }
-                const token= jwt.sign(payload, process.env.JWT_SECRET,{expiresIn:"2h"});
+                // const payload={
+                //     email:user.email,
+                //     userName:req.body.userName
+                // }
+                const token= jwt.sign({ id: user.id }, process.env.JWT_SECRET,{expiresIn:"2h"});
                 res.send(token) 
                 console.log("success")
         }

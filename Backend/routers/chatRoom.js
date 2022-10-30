@@ -43,4 +43,10 @@ router.route("/chatroom").post( auth, async(req,res)=>{
     }
 })
 
+
+router.route("/chatroom").get( auth, async(req,res)=>{
+    const chatrooms = await chatRoomModel.find({});
+
+  res.json(chatrooms); 
+})
 module.exports=router

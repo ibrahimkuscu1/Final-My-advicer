@@ -2,6 +2,7 @@ const express = require('express')
 const bcrypt = require("bcrypt")
 const  router= express.Router()
 const jwt=require("jsonwebtoken")
+const auth=require("../middlewares/auth")
 require("dotenv").config();
 const advicerModel=require("../database/models/adviser")
 
@@ -48,7 +49,7 @@ router.route("/register").post( async(req,res)=>{
     }
 })
 
-router.route("/loginAdviser").post( async(req,res)=>{
+router.route("/loginAdviser").post( auth, async(req,res)=>{
     // const user ={
     //         email:req.body.email,
     //         password:req.body.password
@@ -68,18 +69,18 @@ router.route("/loginAdviser").post( async(req,res)=>{
                 advisers.password
             )
             if(validatePassword){
-                const payload={
-                    name:advisers.name,
-                    email:advisers.email
-                }
-                const token= jwt.sign(payload, process.env.Private_Key,{expiresIn:"2h"});
-                res.send(token) 
+                // const payload={
+                //     name:advisers.name,
+                //     email:advisers.email
+                // }
+                // const token= jwt.sign(payload, process.env.Private_Key,{expiresIn:"2h"});
+                res.send("success adviser") 
                 console.log("success")
         }
       
     }       
         
-    }
+    } 
 
     catch(err){
         console.log(err)

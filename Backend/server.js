@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyparser=require("body-parser")
 const cors = require('cors');
+const socketIO=require("socket.io")
 const connection= require("./database/connection")
 //models
 const user = require("./database/models/user")
@@ -40,6 +41,30 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 }) 
+
+// socket.io part
+
+const io=socketIO(server)
+
+const jwt=require("jsonwebtoken")
+
+io.use(async (socket, next) => {
+  try {
+    const token = socket.handshake.query.token;
+    const payload = await jwt.verify(token, process.env.SECRET);
+    socket.userId = payload.id;
+    next();
+  } catch (err) {}
+});
+
+
+io.on("connection", (socket) => {
+  console.log("Connected: " + socket.userId);
+
+  socket.on("disconnect", () => {
+    console.log("Disconnected: " + socket.userId);
+  });
+})

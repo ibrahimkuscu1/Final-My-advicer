@@ -26,8 +26,8 @@ function ColorSchemesExample() {
         <Nav.Link onClick={redirect4} >Home</Nav.Link>
           <Nav className="right-aligned" activeKey="/signUp">
             <Nav.Link onClick={redirect} href="#signUp">SignUp</Nav.Link>
-            <Nav.Link onClick={redirect2} href="#signUp">SignIn</Nav.Link>
-            <Nav.Link onClick={redirect3} href="#signUp">Adviser</Nav.Link>
+            <Nav.Link onClick={redirect2} href="#signIn">SignIn</Nav.Link>
+            <Nav.Link onClick={redirect3} href="#adviser">Adviser</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
