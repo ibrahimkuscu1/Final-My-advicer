@@ -42,7 +42,7 @@ function App() {
       path='/dashboard' element= {<Dashboard/> }>
 </Route>
 <Route 
-      path='/chatroom' element= {<Chatroom/> }>
+      path='/chatroom/:id' element= {<Chatroom/> }>
 </Route>
 </Routes>
 </Router>

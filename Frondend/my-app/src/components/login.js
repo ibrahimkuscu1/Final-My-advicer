@@ -34,7 +34,8 @@ export default function SignIn(props) {
 
     axios.post("http://localhost:5000/login",
     user).then((res)=>{console.log(res);
-      localStorage.setItem("CC_Token", res.data.token);
+      localStorage.setItem("CC_Token", res.data);
+      console.log(res.data)
       
       
     // axios.get("http://localhost:5000/welcome",{

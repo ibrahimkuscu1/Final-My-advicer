@@ -47,22 +47,30 @@ const server = app.listen(port, () => {
 
 // socket.io part
 
-const io=socketIO(server)
+const io=socketIO(server) 
 
+require("dotenv").config();
 const jwt=require("jsonwebtoken")
 
 io.use(async (socket, next) => {
   try {
-    const token = socket.handshake.query.token;
-    const payload = await jwt.verify(token, process.env.SECRET);
+    console.log(socket.handshake)
+    console.log("socket.handshake")
+    const token = socket.handshake.query.token
+    
+    console.log(token)
+    const payload = await jwt.verify(token, process.env.JWT_SECRET);
+    
     socket.userId = payload.id;
-    next();
-  } catch (err) {}
+    next(); 
+  } catch (err) {
+    console.log(err)   
+  } 
 });
 
 
 io.on("connection", (socket) => {
-  console.log("Connected: " + socket.userId);
+  console.log( "connected: " + socket.userId);
 
   socket.on("disconnect", () => {
     console.log("Disconnected: " + socket.userId);

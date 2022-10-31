@@ -16,7 +16,7 @@ const DashboardPage = (props) => {
       })
       .catch((err) => {
         console.log(err)
-        setTimeout(getChatrooms, 3000);
+        setTimeout(getChatrooms, 40000);
       });
   };
 
