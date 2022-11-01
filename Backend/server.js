@@ -5,10 +5,10 @@ const cors = require('cors');
 const socketIO=require("socket.io")
 const connection= require("./database/connection")
 //models
-const user = require("./database/models/user")
+const User = require("./database/models/user")
 const adviser= require("./database/models/adviser")
-const chatRoom=require("./database/models/chatRoom")
-const messages=require("./database/models/messages")
+const ChatRoom=require("./database/models/chatRoom")
+const Messages=require("./database/models/messages")
 const { model } = require('mongoose');
 const port=5000
 
@@ -54,8 +54,8 @@ const jwt=require("jsonwebtoken")
 
 io.use(async (socket, next) => {
   try {
-    console.log(socket.handshake)
-    console.log("socket.handshake")
+  
+    console.log("hello socket!!")
     const token = socket.handshake.query.token
     
     console.log(token)
@@ -75,4 +75,32 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("Disconnected: " + socket.userId);
   });
+
+
+socket.on("joinRoom", ({ chatroomId }) => {
+  socket.join(chatroomId);
+  console.log("A user joined chatroom: " + chatroomId);
+});
+
+socket.on("leaveRoom", ({ chatroomId }) => {
+  socket.leave(chatroomId);
+  console.log("A user left chatroom: " + chatroomId);
+});
+
+socket.on("chatroomMessage", async ({ chatroomId, message }) => {
+  if (message.trim().length > 0) {
+    const user = await User.findOne({ _id: socket.userId });
+    const newMessage = new Messages({
+      chatroom: chatroomId,
+      user: socket.userId,
+      message,
+    });
+    io.to(chatroomId).emit("newMessage", {
+      message,
+      userName: user.userName,
+      userId: socket.userId,
+    });
+    await newMessage.save();
+  }
+});
 })

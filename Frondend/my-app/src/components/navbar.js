@@ -2,32 +2,30 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
 
 
 function ColorSchemesExample() {
 
-  const redirect = ()=> {
-    window.location = "./signUp"
-  }
-  const redirect2 = ()=> {
-    window.location = "./signIn"
-  }
-  const redirect3 = ()=> {
-    window.location = "./adviser"
-  }
-
-  const redirect4 = ()=> {
-    window.location = "./"
-  } 
+ 
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Nav.Link onClick={redirect4} >Home</Nav.Link>
+        <Link to={"/"}>
+        <Nav.Link  href="#/"> Home</Nav.Link>
+            </Link>
           <Nav className="right-aligned" activeKey="/signUp">
-            <Nav.Link onClick={redirect} href="#signUp">SignUp</Nav.Link>
-            <Nav.Link onClick={redirect2} href="#signIn">SignIn</Nav.Link>
-            <Nav.Link onClick={redirect3} href="#adviser">Adviser</Nav.Link>
+          <Link to={"/signUp/"}>
+          <Nav.Link  href="#signUp">SignUp</Nav.Link>
+            </Link>
+            <Link to={"/signIn/"}>
+            <Nav.Link  href="#signIn">SignIn</Nav.Link>
+            </Link>
+            <Link to={"/adviser/"}>
+            <Nav.Link  href="#adviser">Adviser</Nav.Link>
+            </Link>
+            
           </Nav>
         </Container>
       </Navbar>

@@ -37,7 +37,7 @@ export default function Search(props) {
             <div key={infos._id}>          
                 <h1 onClick={()=>redirect(infos._id)} style={{margin:"10px",cursor:"pointer", border:"solid 1px black", padding:"5px"}}
                 key={infos._id}> {infos.category} {infos.name} {infos.surname}
-                 <Button  variant="primary">Message</Button>{' '}
+                 
 
                 </h1>
 

@@ -12,11 +12,36 @@ import Navbar from "./components/navbar"
 import AdviserPage from './components/adviserPage';
 import Dashboard from"./components/dashboard";
 import Chatroom from './components/chatroom';
-
-
+import io from "socket.io-client"
 
 function App() {
-  return (
+      const [socket, setSocket] = React.useState(null);
+    
+      const setupSocket = () => {
+        const token = localStorage.getItem("CC_Token");
+        if (token && !socket) {
+            const newSocket=io("http://localhost:5000",{'transports': ['websocket', 'polling'],query:{token:localStorage.getItem("CC_Token")}}) 
+    
+          newSocket.on("disconnect", () => {
+            setSocket(null);
+            setTimeout(setupSocket, 3000);
+            
+          });
+    
+          newSocket.on("connect", () => {
+            console.log("success")
+          });
+    
+          setSocket(newSocket);
+        }
+      };
+    
+      React.useEffect(() => {
+        setupSocket();
+        //eslint-disable-next-line
+      }, []);
+
+return (
 
 <Router className = "container">
 <Navbar />
@@ -39,10 +64,10 @@ function App() {
       path='/adviserPage/:id' element= {<AdviserPage/> }>
 </Route>
 <Route 
-      path='/dashboard' element= {<Dashboard/> }>
+      path='/dashboard'  element={<Dashboard socket={socket} />}>
 </Route>
 <Route 
-      path='/chatroom/:id' element= {<Chatroom/> }>
+      path='/chatroom/:id' element={<Chatroom socket={socket} />}>
 </Route>
 </Routes>
 </Router>
