@@ -26,14 +26,18 @@ export default function Register() {
     )
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:5000/register", user).then((res)=>{
+    axios.post("http://localhost:5000/register", user,{
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("CC_Token"),
+      },
+    }).then((res)=>{
         console.log(res)
     }).catch((err)=>
-    { console.log(err)})
+    { alert("first login")})
 
   };
   function handleChange(e){
-    const {name, value} = e.target;
+    const {name, value} = e.target; 
     setUser({
         ...user,
         [name]:value,

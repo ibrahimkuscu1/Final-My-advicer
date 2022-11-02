@@ -6,7 +6,7 @@ const auth=require("../middlewares/auth")
 require("dotenv").config();
 const advicerModel=require("../database/models/adviser")
 
-router.route("/register").post( async(req,res)=>{
+router.route("/register").post( auth, async(req,res)=>{
     console.log("hello22")
     try{
         const adviserInfo={

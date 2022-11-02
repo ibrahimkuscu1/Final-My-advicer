@@ -12,6 +12,7 @@ const Chatroom =({socket})=>{
     
 const [messages, setMessages] = React.useState([]);
   const messageRef = React.useRef();
+  
 
 
   const sendMessage = () => {
@@ -24,6 +25,9 @@ const [messages, setMessages] = React.useState([]);
       messageRef.current.value = "";
     }
   };
+   
+  
+ 
     
 
   if (socket) {
@@ -33,8 +37,7 @@ const [messages, setMessages] = React.useState([]);
     });
   }
   //eslint-disable-next-line
-;
-
+  
      React.useEffect(() => {
         if (socket) {
           socket.emit("joinRoom", {
@@ -62,7 +65,8 @@ const [messages, setMessages] = React.useState([]);
         <div className="chatroomContent">
           {messages.map((message,i) => (
             <div key={i} className="message">
-              <span className="otherMessage">
+              <span className= "otherMessage"
+                >
                 {message.userName}:
               </span>{" "}
               {message.message}

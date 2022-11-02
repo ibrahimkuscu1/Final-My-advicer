@@ -91,16 +91,16 @@ socket.on("chatroomMessage", async ({ chatroomId, message }) => {
   if (message.trim().length > 0) {
     const user = await User.findOne({ _id: socket.userId });
     const newMessage = new Messages({
-      chatroom: chatroomId,
+      adviser: chatroomId,
       user: socket.userId,
       message,
     });
     io.to(chatroomId).emit("newMessage", {
       message,
-      userName: user.userName,
+      userName: user.userName, 
       userId: socket.userId,
     });
-    await newMessage.save();
+    await newMessage.save(); 
   }
 });
 })

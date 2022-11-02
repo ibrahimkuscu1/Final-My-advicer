@@ -1,7 +1,7 @@
 const mongoose= require("mongoose")
 
 let messagesSchema = new mongoose.Schema({
-    chatRoom:{
+    adviser:{
         type:mongoose.Schema.Types.ObjectId
     },
     user:{
