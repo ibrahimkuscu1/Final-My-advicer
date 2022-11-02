@@ -2,9 +2,12 @@ import Search from "./search"
 
 export default function Home() {
     return (
-        <>
-        <Search/>
-        </>
+        <div className="main">
+            <div className="bg">
+            <Search/>
+            </div>
+        
+        </div>
 
     )
 }

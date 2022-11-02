@@ -1,0 +1,16 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    
+    
+}
+
+.bg{
+    
+    background-image: url("../images/depositphotos_11244278-stock-photo-support-and-advice.jpg");
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+}

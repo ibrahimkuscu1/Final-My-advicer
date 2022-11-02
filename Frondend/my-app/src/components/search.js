@@ -22,17 +22,27 @@ export default function Search(props) {
     }
     
   return (
-    <div>
-    <div>
+    <div className="searchContainer">
+    <div className="content">
+      <span className="head1">Find the Perfect</span>
+      <br></br>
+      <span className="head2">top rated Adviser</span>
+    </div>
+    <div className="SearchBar">
     <input 
+    className="searchInput"
     value={name}
+    placeholder="I need advice for"
     onChange={(e) => setName(e.target.value)}
-    style={{width:"200px", height:"50px"}}>
+    >
     </input>
-    <Button onClick={adviserSearch} variant="primary">Search</Button>{' '}
+    
+    </div>
+    <div className="btnBox">
+    <Button onClick={adviserSearch} className="btn" variant="primary">Find Advicer</Button>{' '}
     </div>
     
-    <>
+    <div>
             {infos.map(infos =>  
             <div key={infos._id}>          
                 <h1 onClick={()=>redirect(infos._id)} style={{margin:"10px",cursor:"pointer", border:"solid 1px black", padding:"5px"}}
@@ -43,7 +53,7 @@ export default function Search(props) {
 
                 </div>
                 )}
-            </>
+            </div>
     
     </div>
   );

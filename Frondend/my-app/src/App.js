@@ -2,6 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
+
+
 // importing Navbar Link Components
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from "./components/login";
@@ -12,6 +14,7 @@ import Navbar from "./components/navbar"
 import AdviserPage from './components/adviserPage';
 import Dashboard from"./components/dashboard";
 import Chatroom from './components/chatroom';
+import Footer from "./components/Footer"
 import io from "socket.io-client"
 
 function App() {
@@ -44,7 +47,7 @@ function App() {
 return (
 
 <Router className = "container">
-<Navbar />
+<Navbar  />
 <Routes className = "pageContainer">
 <Route 
       path='/' element= {<Home />}>
@@ -70,6 +73,7 @@ return (
       path='/chatroom/:id' element={<Chatroom socket={socket} />}>
 </Route>
 </Routes>
+<Footer/>
 </Router>
   ); 
 }
