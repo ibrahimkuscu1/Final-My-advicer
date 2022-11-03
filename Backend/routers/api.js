@@ -56,7 +56,7 @@ router.route("/login").post( async(req,res)=>{
     // }
     try{
         if(!req.body.email || !req.body.password){
-            return res.send({msg:"invalid email or password"})
+            return res.send({msg:"please fulfill email or password"})
         }
     
         const user= await userModel.findOne({email:req.body.email});
@@ -73,9 +73,12 @@ router.route("/login").post( async(req,res)=>{
                 //     email:user.email,
                 //     userName:req.body.userName
                 // }
-                const token= jwt.sign({ id: user.id }, process.env.JWT_SECRET,{expiresIn:"2h"});
+                const token= jwt.sign({ id: user.id }, process.env.JWT_SECRET,{expiresIn:"1h"});
                 res.send(token) 
                 console.log("success")
+        }
+        else{
+            res.send({msg:"password is wrong"})
         }
       
     }       

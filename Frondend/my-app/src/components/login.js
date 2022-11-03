@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useState} from "react";
+import makeToast from "./toast"
 
 
 
@@ -33,16 +34,19 @@ export default function SignIn(props) {
    
 
     axios.post("http://localhost:5000/login",
-    user).then((res)=>{console.log(res);
+    user).then((res)=>{ console.log(res);
       localStorage.setItem("CC_Token", res.data);
+      if(res.data===localStorage.getItem("CC_Token"))
+      {
+        makeToast("success", "Welcome dear user");
+      }
+      else{
+        makeToast("success", res.data.msg);
+      }
+      
+      
       console.log(res.data)
       
-      
-    // axios.get("http://localhost:5000/welcome",{
-    //     headers:{Authorization:`Bearer ${res.data}`},
-    // }).then((res)=>{ console.log(res)})
-    // .catch((err)=>{
-    //     console.log(err)})
      }).catch((err)=>{
         console.log(err)})
     };
