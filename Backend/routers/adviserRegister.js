@@ -14,7 +14,9 @@ router.route("/register").post( auth, async(req,res)=>{
             surname:req.body.surname,
             category:req.body.category,
             email:req.body.email,
-            password:req.body.password
+            password:req.body.password,
+            information:req.body.information,
+            contact:req.body.contact
         }
     
         if (!req.body.name || !req.body.surname ||!req.body.category ||!req.body.email ||!req.body.password )
@@ -24,7 +26,7 @@ router.route("/register").post( auth, async(req,res)=>{
     
         const oldAdviser= await advicerModel.findOne({email:req.body.email});
         if(oldAdviser){
-            res.status(409).send({msg:"please login, or use another email to register"})
+            res.send({msg:"please login, or use another email to register"})
         }
         else{
             const encryptedPassword= await bcrypt.hash(req.body.password,12);
@@ -33,7 +35,9 @@ router.route("/register").post( auth, async(req,res)=>{
                 surname:req.body.surname,
                 category:req.body.category,
                 email:req.body.email,
-                password:encryptedPassword
+                password:encryptedPassword,
+                information:req.body.information,
+                contact:req.body.contact
             }, (err)=>{
                 if (err) {console.log(err)
                     
@@ -45,7 +49,7 @@ router.route("/register").post( auth, async(req,res)=>{
 
         
     catch(err){
-        
+        res.send(err)
     }
 })
 

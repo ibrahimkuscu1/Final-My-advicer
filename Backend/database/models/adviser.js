@@ -5,7 +5,10 @@ let adviserSchema = new mongoose.Schema({
     surname:{type:String,required:true},
     category:{type:String,required:true},
     email:{type:String,required:true},
-    password:{type:String,required:true}
+    password:{type:String,required:true},
+    information:{type:String},
+    contact:{type:String}
+
 
 })
 

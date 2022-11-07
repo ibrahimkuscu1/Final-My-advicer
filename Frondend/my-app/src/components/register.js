@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState} from "react";
 import  axios from "axios"
+import makeToast from "./toast"
 import AdviserSignIn from "./adviserLogin";
 
 
@@ -21,7 +22,9 @@ export default function Register() {
           surname:"",
           category:"",
           email:"",
-          password:""
+          password:"",
+          information:"",
+          contact:""
         }
     )
   const handleSubmit = (event) => {
@@ -30,10 +33,13 @@ export default function Register() {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("CC_Token"),
       },
-    }).then((res)=>{
-        console.log(res)
-    }).catch((err)=>
-    { alert("first login")})
+    }).then((res)=>{console.log(res)
+      makeToast("success", res.data.msg)
+        
+    }).catch((err)=> 
+    { if(err) 
+      {makeToast("error", "Firstly sign in or register")}
+  })
 
   };
   function handleChange(e){
@@ -111,6 +117,30 @@ export default function Register() {
                     name="email"
                     value={user.email}
                     autoComplete="email"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="information"
+                    label="About"
+                    name="information"
+                    value={user.information}
+                    autoComplete="about"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="contact"
+                    label="Contact"
+                    name="contact"
+                    value={user.contact}
+                    autoComplete="contact"
                     onChange={handleChange}
                   />
                 </Grid>

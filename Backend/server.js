@@ -7,7 +7,6 @@ const connection= require("./database/connection")
 //models
 const User = require("./database/models/user")
 const adviser= require("./database/models/adviser")
-const ChatRoom=require("./database/models/chatRoom")
 const Messages=require("./database/models/messages")
 const { model } = require('mongoose');
 const port=5000
@@ -17,19 +16,19 @@ const auth=require("./middlewares/auth")
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cors());
-// app.use(express.urlencoded({extended:false}))
+// app.use(express.urlencoded({extended:false})) 
 
 
 // routes
 const API=require("./routers/api")
 const REGISTER=require("./routers/adviserRegister")
 const SEARCH=require("./routers/search")
-const CHATROOM=require("./routers/chatRoom")
+
 
 app.use("/",API)
 app.use("/",REGISTER)
 app.use("/",SEARCH)
-app.use("/",CHATROOM)
+
 
 
 
@@ -47,7 +46,14 @@ const server = app.listen(port, () => {
 
 // socket.io part
 
-const io=socketIO(server) 
+const io=socketIO(server,{
+  allowEIO3: true,
+  cors: {
+    origin: true,
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
+}) 
 
 require("dotenv").config();
 const jwt=require("jsonwebtoken")
@@ -64,7 +70,8 @@ io.use(async (socket, next) => {
     socket.userId = payload.id;
     next(); 
   } catch (err) {
-    console.log(err)   
+     console.log(err)
+    
   } 
 });
 
