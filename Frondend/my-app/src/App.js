@@ -13,7 +13,7 @@ import Home from "./components/home"
 import Navbar from "./components/navbar" 
 import AdviserPage from './components/adviserPage';
 import Chatroom from './components/chatroom';
-import Footer from "./components/Footer"
+
 // import io from "socket.io-client"
 
 function App() {
@@ -70,7 +70,7 @@ return (
       path='/chatroom/:id' element={<Chatroom />}>
 </Route>
 </Routes>
-<Footer/>
+
 </Router>
   ); 
 }

@@ -1,6 +1,7 @@
 const express = require('express')
 const  router= express.Router()
 const Adviser= require("../database/models/adviser")
+const auth=require("../middlewares/auth")
 
 router.route("/search/:key").get( async (req,res)=>{
  let data = await Adviser.find(
@@ -25,7 +26,7 @@ router.route("/search/:key").get( async (req,res)=>{
 //         .catch(err => res.status(400).json('Error: ' + err));
 // });
 
-router.route("/search2/").get( async (req,res)=>{
+router.route("/search2/").get( auth, async (req,res)=>{
     let data = await Adviser.find(
     )
     .then(Adviser => res.json(Adviser))

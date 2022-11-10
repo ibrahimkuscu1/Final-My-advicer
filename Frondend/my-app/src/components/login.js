@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useState} from "react";
 import makeToast from "./toast"
+import Footer from "./Footer"
 
 
 
@@ -28,6 +29,9 @@ export default function SignIn(props) {
           password:""
         }
     )
+    function redirect (){
+      window.location.href=("http://localhost:3000/")
+    }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -39,6 +43,7 @@ export default function SignIn(props) {
       if(res.data===localStorage.getItem("CC_Token"))
       {
         makeToast("success", "Welcome dear user");
+        setTimeout(redirect,1000)
       }
       else{
         makeToast("success", res.data.msg);
@@ -49,6 +54,7 @@ export default function SignIn(props) {
       
      }).catch((err)=>{
         console.log(err)})
+      
     };
 
   
@@ -123,7 +129,7 @@ export default function SignIn(props) {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="http://localhost:3000/signUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -131,6 +137,7 @@ export default function SignIn(props) {
           </Box>
         </Box>
       </Container>
+      <Footer/>
     </ThemeProvider>
   );
 }

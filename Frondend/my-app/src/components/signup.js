@@ -9,6 +9,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState} from "react";
 import  axios from "axios"
+import makeToast from "./toast"
+import Footer from "./Footer"
 
 
 const theme = createTheme();
@@ -22,11 +24,16 @@ export default function SignUp(props) {
         }
     )
     
+    function redirect (){
+      window.location.href=("http://localhost:3000/signIn")
+    }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post("http://localhost:5000/signup", user).then((res)=>{
      console.log(res);
-    window.location="./signIn"
+     makeToast("success", res.data.msg)
+    setTimeout(redirect,1000)
     }).catch((err)=>
     { console.log(err)})
 
@@ -115,6 +122,7 @@ export default function SignUp(props) {
         </Box>
     
       </Container>
+      <Footer/>
     </ThemeProvider>
   );
 }

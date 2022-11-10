@@ -78,7 +78,7 @@ router.route("/loginAdviser").post( auth, async(req,res)=>{
                 //     email:advisers.email
                 // }
                 // const token= jwt.sign(payload, process.env.Private_Key,{expiresIn:"2h"});
-                res.send("success adviser") 
+                res.send({msg:"Successful Login"}) 
                 console.log("success")
         }
       

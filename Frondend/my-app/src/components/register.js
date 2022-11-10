@@ -11,6 +11,7 @@ import { useState} from "react";
 import  axios from "axios"
 import makeToast from "./toast"
 import AdviserSignIn from "./adviserLogin";
+import Footer from "./Footer"
 
 
 const theme = createTheme();
@@ -177,6 +178,7 @@ export default function Register() {
     
       </Container>
       <AdviserSignIn/>
+      <Footer/>
     </ThemeProvider>
   );
   

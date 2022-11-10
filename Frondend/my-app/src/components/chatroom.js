@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import io from "socket.io-client"
+import Footer from "./Footer"
 
  
 const Chatroom =()=>{
@@ -33,6 +34,7 @@ const Chatroom =()=>{
   
         setSocket(newSocket);
       }
+      
       console.log(socket)
       sendMessage()
     };
@@ -76,13 +78,15 @@ const Chatroom =()=>{
             });
           }
         };
+        
         //eslint-disable-next-line
       }, [socket]);
     
     
      
     return(
-        <div className="chatroomPage">
+      <div>
+<div className="chatroomPage">
       <div className="chatroomSection">
         <div className="cardHeader">Adviser Name</div>
         <div className="chatroomContent">
@@ -113,6 +117,9 @@ const Chatroom =()=>{
         </div>
       </div>
     </div>
+    <Footer/>
+      </div>
+        
     )
 }
 

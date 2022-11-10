@@ -10,7 +10,7 @@ import {
 export default function App() {
   return (
     <MDBFooter bgColor='primary' className='text-white text-center text-lg-left'>
-      <MDBContainer className='p-4'>
+      <MDBContainer style={{marginTop: "auto"}} className='p-4'>
         <MDBRow>
           <MDBCol lg='6' md='12' className='mb-4 mb-md-0'>
             <h5 className='text-uppercase'>Contact Us</h5>

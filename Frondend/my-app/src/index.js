@@ -5,6 +5,8 @@ import "./style/common.css"
 import "./style/chatroom.css"
 import "./style/home.css"
 import "./style/search.css"
+import "./style/general.css"
+import "./style/adviserPage.css"
 import "mdb-react-ui-kit"
 
 

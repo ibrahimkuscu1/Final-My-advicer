@@ -65,7 +65,7 @@ io.use(async (socket, next) => {
     const token = socket.handshake.query.token
     
     console.log(token)
-    const payload = await jwt.verify(token, process.env.JWT_SECRET);
+    const payload = await jwt.verify(token, process.env.JWT_SECRET); 
     
     socket.userId = payload.id;
     next(); 
@@ -73,7 +73,7 @@ io.use(async (socket, next) => {
      console.log(err)
     
   } 
-});
+}); 
 
 
 io.on("connection", (socket) => {
