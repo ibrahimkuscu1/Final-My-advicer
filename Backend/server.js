@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 
 
 
-const server = app.listen(port, () => {
+const server = app.listen(process.env.PORT ||port, () => {
   console.log(`Example app listening on port ${port}`)
 }) 
 
