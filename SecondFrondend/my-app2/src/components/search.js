@@ -14,7 +14,7 @@ export default function Search() {
     
     console.log(name)
     React.useEffect(() => {
-        axios.get("https://myadviser.herokuapp.com/search" + name).then(({data})=>{
+        axios.get("https://myadviser.herokuapp.com/search/" + name).then(({data})=>{
             setInfos(data)
             console.log(data)  
         })

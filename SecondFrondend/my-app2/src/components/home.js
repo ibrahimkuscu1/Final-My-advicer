@@ -9,7 +9,7 @@ export default function Home() {
     
     
     const redirect = ()=> {
-        window.location.href = "/"+name
+        window.location.href = "/search/"+name
         
       }
       

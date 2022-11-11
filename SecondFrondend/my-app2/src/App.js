@@ -13,6 +13,7 @@ import Home from "./components/home"
 import Navbar from "./components/navbar" 
 import AdviserPage from './components/adviserPage';
 import Chatroom from './components/chatroom';
+import Search from "./components/search"
 
 
 
@@ -42,6 +43,9 @@ return (
 </Route>
 <Route 
       path='/chatroom/:id' element={<Chatroom />}>
+</Route>
+<Route 
+      path='/search/:name' element={<Search />}>
 </Route>
 </Routes>
 
