@@ -1,4 +1,9 @@
-.searchBar{
+.adviserBox{
+    width: 100%; 
+    margin: 5px;
+    cursor: pointer;
+    border: solid black 1px;
+    padding: 5px;
     
 }
 
@@ -36,3 +41,9 @@
     border: 1px solid black;
     border-radius: 5px; 
 }
+
+.profession{
+    display: flex;
+    flex-direction: row;
+}
+

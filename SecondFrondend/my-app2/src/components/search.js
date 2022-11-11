@@ -1,60 +1,56 @@
+import React from "react"
 import { useState} from "react";
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
+import { useParams } from "react-router-dom";
+import Footer from "./Footer"
 
 
 
 
-export default function Search(props) {
-    const [name, setName] = useState("");
+
+export default function Search() {
     const [infos, setInfos] = useState([]) 
-
-    function adviserSearch(){
-        axios.get("https://myadviser.herokuapp.com/search/" + name).then(({data})=>{
+    const name=useParams()
+    
+    console.log(name)
+    React.useEffect(() => {
+        axios.get("https://myadviser.herokuapp.com/search" + name).then(({data})=>{
             setInfos(data)
             console.log(data)  
         })
-    }
-
+    },[name])
+    
     const redirect = (id)=> {
       window.location = `/adviserPage/${id}`
       console.log(id)
     }
     
   return (
-    <div className="searchContainer">
-    <div className="content">
-      <span className="head1">Find the Perfect</span>
-      <br></br>
-      <span className="head2">top rated Adviser</span>
-    </div>
-    <div className="SearchBar">
-    <input 
-    className="searchInput"
-    value={name}
-    placeholder="I need advice for"
-    onChange={(e) => setName(e.target.value)}
-    >
-    </input>
-    
-    </div>
-    <div className="btnBox">
-    <Button onClick={adviserSearch} className="btn" variant="primary">Find Advicer</Button>{' '}
-    </div>
-    
     <div>
+<div className="searchContainer">
+            <div>
             {infos.map(infos =>  
             <div key={infos._id}>          
-                <h1 onClick={()=>redirect(infos._id)} style={{margin:"10px",cursor:"pointer", border:"solid 1px black", padding:"5px"}}
-                key={infos._id}> {infos.category} {infos.name} {infos.surname}
+                <h3 onClick={()=>redirect(infos._id)} className="adviserBox"
+                key={infos._id}> 
+                <div className="profession">
+                <h3>Profession:</h3> {infos.category}
+
+                {infos.name} 
+                {infos.surname}
+                </div>
+                
                  
 
-                </h1>
+                </h3>
 
                 </div>
                 )}
             </div>
     
     </div>
+    <Footer/>
+    </div>
+    
   );
 }

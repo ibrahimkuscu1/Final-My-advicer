@@ -16,8 +16,11 @@ export default function AdviserPage() {
     const myID2=myID.substring(7)
     const myID3=myID2.slice(0,-2)
     
+    
+    
+
     function redirect (){
-      window.location.href=("http://localhost:3000/signIn")
+      window.location.href="/signIn"
     }
    
 

@@ -16,10 +16,10 @@ function ColorSchemesExample() {
 
   
 function redirect (){
-  window.location.href="http://localhost:3000/"
+  window.location.href="/"
 }
   function logOut(){ 
-    axios.post (  "https://myadviser.herokuapp.com/",
+    axios.post (  "https://myadviser.herokuapp.com/login",
     user).then((res)=>{ localStorage.setItem("CC_Token", res.data);
       if(res.data.msg==='password is wrong')
     {

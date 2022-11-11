@@ -25,7 +25,7 @@ export default function SignUp(props) {
     )
     
     function redirect (){
-      window.location.href=("http://localhost:3000/signIn")
+      window.location.href="/signIn"
     }
 
   const handleSubmit = (event) => {

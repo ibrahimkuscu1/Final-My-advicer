@@ -20,7 +20,10 @@ import Footer from "./Footer"
 
 
 
+
 const theme = createTheme();
+
+
 
 export default function SignIn(props) {
     const [user,setUser] = useState(
@@ -30,8 +33,9 @@ export default function SignIn(props) {
         }
     )
     function redirect (){
-      window.location.href=("http://localhost:3000/")
+      window.location.href="/"
     }
+    console.log(process.env)
 
   const handleSubmit = (event) => {
     event.preventDefault();

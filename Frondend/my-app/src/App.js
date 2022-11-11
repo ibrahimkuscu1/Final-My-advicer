@@ -13,36 +13,12 @@ import Home from "./components/home"
 import Navbar from "./components/navbar" 
 import AdviserPage from './components/adviserPage';
 import Chatroom from './components/chatroom';
+import Search from "./components/search"
 
-// import io from "socket.io-client"
+
 
 function App() {
-      // const [socket, setSocket] = React.useState(null);
-    
-      // const setupSocket = () => {
-      //   const token = localStorage.getItem("CC_Token");
-      //   if (token && !socket) {
-      //       const newSocket=io("http://localhost:5000",{'transports': ['websocket', 'polling'],query:{token:localStorage.getItem("CC_Token")}}) 
-    
-      //     newSocket.on("disconnect", () => {
-      //       setSocket(null);
-      //       setTimeout(setupSocket, 3000);
-            
-            
-      //     });
-    
-      //     newSocket.on("connect", () => {
-            
-      //     });
-    
-      //     setSocket(newSocket);
-      //   }
-      // };
-    
-      // React.useEffect(() => {
-      //   setupSocket();
-      //   //eslint-disable-next-line
-      // }, []);
+      
 
 return (
 
@@ -68,6 +44,9 @@ return (
 </Route>
 <Route 
       path='/chatroom/:id' element={<Chatroom />}>
+</Route>
+<Route 
+      path='/search/:name' element={<Search />}>
 </Route>
 </Routes>
 
