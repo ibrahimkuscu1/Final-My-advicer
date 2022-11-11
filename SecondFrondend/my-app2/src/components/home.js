@@ -3,6 +3,8 @@ import { useState} from "react";
 import Button from 'react-bootstrap/Button';
 
 
+
+
 export default function Home() {
     const [name, setName] = useState("");
     
@@ -39,6 +41,7 @@ export default function Home() {
 
     
     </div>
+    
     <Footer/>
     </div>
         

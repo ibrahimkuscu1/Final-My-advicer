@@ -46,20 +46,23 @@ export default function AdviserPage() {
         {infos.filter((dt)=>dt._id===myID3).map(infos =>  
             <div key={infos._id} className="adviserContainer">          
                 <div className="divv">
-                <h2 
+                <h2 className="colorful"
                 >{infos.category}
                 </h2>
                 </div>
                 <div className="divv">
-                <h4>Adviser İnformation</h4>
+                <h4 className="colorful"
+                >Adviser İnformation</h4>
                 {infos.name} {infos.surname}
                 </div>
                 <div className="divv">
-                <h4>About Adviser</h4>
+                <h4 className="colorful"
+                >About Adviser</h4>
                 {infos.information}
                 </div>
                 <div className="divv">
-                <h4>Communication Adviser</h4>
+                <h4 className="colorful"
+                >Communication Adviser</h4>
                 {infos.contact}
                 </div>
                  <Link to={"/chatroom/" + infos._id}>

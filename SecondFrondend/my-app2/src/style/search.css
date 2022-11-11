@@ -6,6 +6,10 @@
     padding: 5px;
     
 }
+.adviserBox:hover{
+    background-color: rgb(128, 128, 128);
+}
+
 
 .searchContainer{
     display: flex;
@@ -45,5 +49,13 @@
 .profession{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
+.miniBox{
+    margin-left: 5px;
+}
+
+.colorful{
+    color: red;
+}
